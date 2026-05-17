@@ -1,0 +1,8 @@
+# [File 21] physical-plan crate manifest
+[package]
+name = "physical-plan"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+expr = { path = "../expr" }

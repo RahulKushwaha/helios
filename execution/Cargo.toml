@@ -1,0 +1,9 @@
+# [File 25] execution crate manifest
+[package]
+name = "execution"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+expr = { path = "../expr" }
+physical-plan = { path = "../physical-plan" }

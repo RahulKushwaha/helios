@@ -1,0 +1,8 @@
+[book]
+title = "query_opt"
+authors = ["imrahulk"]
+language = "en"
+src = "src"
+
+[build]
+build-dir = "../target/book"

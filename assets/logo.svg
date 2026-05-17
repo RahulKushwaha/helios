@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 240" role="img" aria-label="HELIOS">
+  <title>heliosDB</title>
+  <defs>
+    <linearGradient id="sunFire" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFE15A"/>
+      <stop offset="60%" stop-color="#FF9A1F"/>
+      <stop offset="100%" stop-color="#FF4400"/>
+    </linearGradient>
+    <linearGradient id="fire" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"  stop-color="#FFEC4D"/>
+      <stop offset="45%" stop-color="#FFA20A"/>
+      <stop offset="80%" stop-color="#FF3D00"/>
+      <stop offset="100%" stop-color="#7A0014"/>
+    </linearGradient>
+    <pattern id="scan" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="4" fill="#000000" fill-opacity="0"/>
+      <rect width="4" height="1" fill="#FFFFFF" fill-opacity="0.05"/>
+    </pattern>
+  </defs>
+
+  <rect x="0" y="0" width="720" height="240" rx="12" fill="#0A0E27"/>
+  <rect x="0" y="0" width="720" height="240" rx="12" fill="url(#scan)"/>
+  <rect x="4" y="4" width="712" height="232" rx="10" fill="none"
+        stroke="#FFD23F" stroke-width="2" stroke-opacity="0.55"/>
+
+  <g fill="url(#sunFire)">
+    <rect x="84" y="65" width="14" height="7"/>
+    <rect x="84" y="72" width="14" height="7"/>
+    <rect x="42" y="86" width="14" height="7"/>
+    <rect x="126" y="86" width="14" height="7"/>
+    <rect x="42" y="93" width="14" height="7"/>
+    <rect x="77" y="93" width="28" height="7"/>
+    <rect x="126" y="93" width="14" height="7"/>
+    <rect x="63" y="100" width="56" height="7"/>
+    <rect x="56" y="107" width="70" height="7"/>
+    <rect x="35" y="114" width="7" height="7"/>
+    <rect x="56" y="114" width="70" height="7"/>
+    <rect x="140" y="114" width="7" height="7"/>
+    <rect x="35" y="121" width="7" height="7"/>
+    <rect x="56" y="121" width="70" height="7"/>
+    <rect x="140" y="121" width="7" height="7"/>
+    <rect x="56" y="128" width="70" height="7"/>
+    <rect x="63" y="135" width="56" height="7"/>
+    <rect x="42" y="142" width="14" height="7"/>
+    <rect x="77" y="142" width="28" height="7"/>
+    <rect x="126" y="142" width="14" height="7"/>
+    <rect x="42" y="149" width="14" height="7"/>
+    <rect x="126" y="149" width="14" height="7"/>
+    <rect x="84" y="163" width="14" height="7"/>
+    <rect x="84" y="170" width="14" height="7"/>
+  </g>
+
+  <g fill="#FFFFFF" fill-opacity="0.85">
+    <rect x="170" y="48" width="6" height="6"/>
+    <rect x="640" y="56" width="6" height="6"/>
+    <rect x="190" y="194" width="6" height="6"/>
+    <rect x="660" y="186" width="6" height="6"/>
+  </g>
+
+  <g font-family="'Impact', 'Arial Black', 'Helvetica Neue', sans-serif"
+     font-size="120" font-weight="900"
+     transform="skewX(-12)">
+    <text x="220" y="175" fill="#000000" fill-opacity="0.9">HELIOS</text>
+    <text x="214" y="169" stroke="#000000" stroke-width="20" fill="#000000"
+          paint-order="stroke" stroke-linejoin="round">HELIOS</text>
+    <text x="214" y="169" stroke="#FFFFFF" stroke-width="10" fill="#FFFFFF"
+          paint-order="stroke" stroke-linejoin="round">HELIOS</text>
+    <text x="214" y="169" fill="url(#fire)">HELIOS</text>
+  </g>
+
+  <text x="360" y="220" text-anchor="middle"
+        font-family="'Courier New', monospace" font-size="13"
+        letter-spacing="6" fill="#FFD23F" fill-opacity="0.75">
+    INSERT  COIN  TO  QUERY
+  </text>
+</svg>

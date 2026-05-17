@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./assets/logo.svg" alt="helios" width="480">
+</p>
+
 # helios
 
 A from-scratch SQL query engine in Rust, built as a learning project. Implements the full pipeline — parser → logical plan → optimizer → physical plan → batched pull-based execution → RocksDB storage — and ships as an interactive REPL.

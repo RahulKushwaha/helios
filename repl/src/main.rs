@@ -14,9 +14,9 @@ mod pretty_print;
 fn main() {
     let db_path = std::env::args()
         .nth(1)
-        .unwrap_or_else(|| "./query_opt_data".to_string());
+        .unwrap_or_else(|| "./helios_data".to_string());
 
-    println!("Query Optimizer — Interactive REPL");
+    println!("helios — Interactive SQL REPL");
     println!("Database path: {}", db_path);
     println!("Type SQL statements. Use EXPLAIN before SELECT to see the query plan.");
     println!("Type .tables to list tables, .schema <table> to see a schema, .quit to exit.");
@@ -33,7 +33,7 @@ fn main() {
     }
 
     let mut rl = DefaultEditor::new().expect("failed to create editor");
-    let history_file = format!("{}/.query_opt_history", db_path);
+    let history_file = format!("{}/.helios_history", db_path);
     let _ = rl.load_history(&history_file);
 
     loop {
@@ -170,7 +170,9 @@ fn handle_sql(sql: &str, storage: &mut RocksStorage, catalog: &mut HashMap<Strin
     }
 }
 
-fn try_optimize(plan: expr::logical_plan::plan::LogicalPlan) -> Option<expr::logical_plan::plan::LogicalPlan> {
+fn try_optimize(
+    plan: expr::logical_plan::plan::LogicalPlan,
+) -> Option<expr::logical_plan::plan::LogicalPlan> {
     std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         use optimizer::optimizer::Optimizer;
         let opt = Optimizer::new(vec![]);
@@ -198,10 +200,7 @@ fn logical_to_physical(
     use physical_plan::plan::PhysicalPlan;
 
     match plan {
-        LogicalPlan::Scan {
-            table_name,
-            schema,
-        } => PhysicalPlan::TableScan {
+        LogicalPlan::Scan { table_name, schema } => PhysicalPlan::TableScan {
             table_name: table_name.clone(),
             schema: schema.clone(),
         },

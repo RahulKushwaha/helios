@@ -76,7 +76,9 @@ pub fn plan_schema(plan: &PhysicalPlan) -> Schema {
 /// Compute an aggregate function over a slice of values.
 pub fn compute_aggregate(fun: &AggFunc, vals: &[&FieldValue]) -> FieldValue {
     match fun {
-        AggFunc::Count => FieldValue::Int(vals.iter().filter(|v| ***v != FieldValue::Null).count() as i64),
+        AggFunc::Count => {
+            FieldValue::Int(vals.iter().filter(|v| ***v != FieldValue::Null).count() as i64)
+        }
         AggFunc::Sum => {
             let mut sum = 0i64;
             let mut has_float = false;

@@ -21,7 +21,9 @@ use expr::logical_plan::LogicalPlan;
 pub struct SubqueryToJoin;
 
 impl OptimizerRule for SubqueryToJoin {
-    fn name(&self) -> &str { "SubqueryToJoin" }
+    fn name(&self) -> &str {
+        "SubqueryToJoin"
+    }
 
     fn optimize(&self, plan: LogicalPlan) -> Result<LogicalPlan, OptimizerError> {
         // TODO: Walk the plan tree. For each Filter node:
@@ -44,13 +46,19 @@ mod tests {
 
     #[test]
     #[ignore]
-    fn test_in_subquery_to_semi_join() { todo!() }
+    fn test_in_subquery_to_semi_join() {
+        todo!()
+    }
 
     #[test]
     #[ignore]
-    fn test_not_in_to_anti_join() { todo!() }
+    fn test_not_in_to_anti_join() {
+        todo!()
+    }
 
     #[test]
     #[ignore]
-    fn test_no_change_without_subquery() { todo!() }
+    fn test_no_change_without_subquery() {
+        todo!()
+    }
 }

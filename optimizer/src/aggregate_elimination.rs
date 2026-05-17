@@ -15,7 +15,9 @@ use expr::logical_plan::LogicalPlan;
 pub struct AggregateElimination;
 
 impl OptimizerRule for AggregateElimination {
-    fn name(&self) -> &str { "AggregateElimination" }
+    fn name(&self) -> &str {
+        "AggregateElimination"
+    }
 
     fn optimize(&self, plan: LogicalPlan) -> Result<LogicalPlan, OptimizerError> {
         // TODO: Walk the plan tree. For each Aggregate:
@@ -33,9 +35,13 @@ mod tests {
 
     #[test]
     #[ignore]
-    fn test_eliminate_aggregate_on_unique_key() { todo!() }
+    fn test_eliminate_aggregate_on_unique_key() {
+        todo!()
+    }
 
     #[test]
     #[ignore]
-    fn test_keep_aggregate_on_non_unique() { todo!() }
+    fn test_keep_aggregate_on_non_unique() {
+        todo!()
+    }
 }

@@ -16,7 +16,9 @@ use expr::logical_plan::LogicalPlan;
 pub struct DistinctToAggregate;
 
 impl OptimizerRule for DistinctToAggregate {
-    fn name(&self) -> &str { "DistinctToAggregate" }
+    fn name(&self) -> &str {
+        "DistinctToAggregate"
+    }
 
     fn optimize(&self, plan: LogicalPlan) -> Result<LogicalPlan, OptimizerError> {
         // TODO: Walk the plan tree.
@@ -33,5 +35,7 @@ mod tests {
 
     #[test]
     #[ignore]
-    fn test_distinct_to_group_by() { todo!() }
+    fn test_distinct_to_group_by() {
+        todo!()
+    }
 }

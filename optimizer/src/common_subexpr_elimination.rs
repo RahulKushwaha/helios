@@ -18,7 +18,9 @@ use expr::logical_plan::LogicalPlan;
 pub struct CommonSubexprElimination;
 
 impl OptimizerRule for CommonSubexprElimination {
-    fn name(&self) -> &str { "CommonSubexprElimination" }
+    fn name(&self) -> &str {
+        "CommonSubexprElimination"
+    }
 
     fn optimize(&self, plan: LogicalPlan) -> Result<LogicalPlan, OptimizerError> {
         // TODO: Walk the plan tree. For each node with expressions:
@@ -38,9 +40,13 @@ mod tests {
 
     #[test]
     #[ignore]
-    fn test_eliminate_duplicate_expr() { todo!() }
+    fn test_eliminate_duplicate_expr() {
+        todo!()
+    }
 
     #[test]
     #[ignore]
-    fn test_no_change_unique_exprs() { todo!() }
+    fn test_no_change_unique_exprs() {
+        todo!()
+    }
 }

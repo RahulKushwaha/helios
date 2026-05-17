@@ -111,9 +111,7 @@ fn label_logical(plan: &LogicalPlan) -> String {
         LogicalPlan::Projection { exprs, .. } => {
             format!("{} {}", op("Projection"), expr_list(exprs))
         }
-        LogicalPlan::Join {
-            on, join_type, ..
-        } => {
+        LogicalPlan::Join { on, join_type, .. } => {
             format!(
                 "{} {} ON {}",
                 op("Join"),
@@ -174,9 +172,7 @@ fn label_physical(plan: &PhysicalPlan) -> String {
         PhysicalPlan::Projection { exprs, .. } => {
             format!("{} {}", op("Projection"), expr_list(exprs))
         }
-        PhysicalPlan::NestedLoopJoin {
-            on, join_type, ..
-        } => format!(
+        PhysicalPlan::NestedLoopJoin { on, join_type, .. } => format!(
             "{} {} ON {}",
             op("NestedLoopJoin"),
             join_type_str(join_type),
@@ -232,7 +228,10 @@ fn expr_str(s: &str) -> String {
 }
 
 fn expr_list<E: std::fmt::Display>(exprs: &[E]) -> String {
-    let inner: Vec<String> = exprs.iter().map(|e| e.to_string().green().to_string()).collect();
+    let inner: Vec<String> = exprs
+        .iter()
+        .map(|e| e.to_string().green().to_string())
+        .collect();
     format!("[{}]", inner.join(", "))
 }
 

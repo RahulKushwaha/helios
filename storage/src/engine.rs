@@ -42,13 +42,18 @@ impl<'a, S: Catalog + StorageRead> DataSource for StorageDataSource<'a, S> {
 
 impl<'a, S: Catalog + StorageRead> ExecutionEngine for RocksEngine<'a, S> {
     fn execute(&self, plan: &PhysicalPlan) -> Result<ResultSet, ExecutionError> {
-        if let PhysicalPlan::Filter { predicate, input, .. } = plan {
+        if let PhysicalPlan::Filter {
+            predicate, input, ..
+        } = plan
+        {
             if let Some(rows) = self.try_index_scan(input, predicate) {
                 return Ok(rows);
             }
         }
 
-        let source = StorageDataSource { storage: self.storage };
+        let source = StorageDataSource {
+            storage: self.storage,
+        };
         let mut stream = build_stream(plan, &source)?;
         let mut out = Vec::new();
         while let Some(batch) = stream.next_batch()? {

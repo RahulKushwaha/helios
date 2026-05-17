@@ -133,9 +133,21 @@ mod tests {
     #[test]
     fn compare_composite_pk() {
         let codec = RowCodec::new(2);
-        let (k1, _) = codec.encode(&[FieldValue::Int(1), FieldValue::Str("b".into()), FieldValue::Int(0)]);
-        let (k2, _) = codec.encode(&[FieldValue::Int(1), FieldValue::Str("a".into()), FieldValue::Int(0)]);
-        let (k3, _) = codec.encode(&[FieldValue::Int(2), FieldValue::Str("a".into()), FieldValue::Int(0)]);
+        let (k1, _) = codec.encode(&[
+            FieldValue::Int(1),
+            FieldValue::Str("b".into()),
+            FieldValue::Int(0),
+        ]);
+        let (k2, _) = codec.encode(&[
+            FieldValue::Int(1),
+            FieldValue::Str("a".into()),
+            FieldValue::Int(0),
+        ]);
+        let (k3, _) = codec.encode(&[
+            FieldValue::Int(2),
+            FieldValue::Str("a".into()),
+            FieldValue::Int(0),
+        ]);
 
         // Same first col, second col decides: "b" > "a"
         assert_eq!(k1.compare(&k2, 2), Ordering::Greater);

@@ -17,7 +17,9 @@ use expr::logical_plan::LogicalPlan;
 pub struct LimitPushdown;
 
 impl OptimizerRule for LimitPushdown {
-    fn name(&self) -> &str { "LimitPushdown" }
+    fn name(&self) -> &str {
+        "LimitPushdown"
+    }
 
     fn optimize(&self, plan: LogicalPlan) -> Result<LogicalPlan, OptimizerError> {
         // TODO: Walk the plan tree. For each Limit node:
@@ -35,9 +37,13 @@ mod tests {
 
     #[test]
     #[ignore]
-    fn test_push_limit_through_projection() { todo!() }
+    fn test_push_limit_through_projection() {
+        todo!()
+    }
 
     #[test]
     #[ignore]
-    fn test_no_push_limit_through_filter() { todo!() }
+    fn test_no_push_limit_through_filter() {
+        todo!()
+    }
 }

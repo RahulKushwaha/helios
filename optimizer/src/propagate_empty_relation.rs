@@ -18,7 +18,9 @@ use expr::logical_plan::LogicalPlan;
 pub struct PropagateEmptyRelation;
 
 impl OptimizerRule for PropagateEmptyRelation {
-    fn name(&self) -> &str { "PropagateEmptyRelation" }
+    fn name(&self) -> &str {
+        "PropagateEmptyRelation"
+    }
 
     fn optimize(&self, plan: LogicalPlan) -> Result<LogicalPlan, OptimizerError> {
         // TODO: Walk the plan tree bottom-up.
@@ -39,9 +41,13 @@ mod tests {
 
     #[test]
     #[ignore]
-    fn test_propagate_through_filter() { todo!() }
+    fn test_propagate_through_filter() {
+        todo!()
+    }
 
     #[test]
     #[ignore]
-    fn test_inner_join_with_empty_side() { todo!() }
+    fn test_inner_join_with_empty_side() {
+        todo!()
+    }
 }

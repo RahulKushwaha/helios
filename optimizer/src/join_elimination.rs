@@ -15,7 +15,9 @@ use expr::logical_plan::LogicalPlan;
 pub struct JoinElimination;
 
 impl OptimizerRule for JoinElimination {
-    fn name(&self) -> &str { "JoinElimination" }
+    fn name(&self) -> &str {
+        "JoinElimination"
+    }
 
     fn optimize(&self, plan: LogicalPlan) -> Result<LogicalPlan, OptimizerError> {
         // TODO: Walk the plan tree. For each Join node:
@@ -33,9 +35,13 @@ mod tests {
 
     #[test]
     #[ignore]
-    fn test_eliminate_unused_right_side() { todo!() }
+    fn test_eliminate_unused_right_side() {
+        todo!()
+    }
 
     #[test]
     #[ignore]
-    fn test_keep_join_when_columns_used() { todo!() }
+    fn test_keep_join_when_columns_used() {
+        todo!()
+    }
 }

@@ -1,18 +1,3 @@
 [workspace]
-members = ["expr", "optimizer", "physical-plan", "execution", "storage", "sql-parser", "row"]
+members = ["expr", "optimizer", "physical-plan", "execution", "storage", "sql-parser", "row", "repl"]
 resolver = "2"
-
-[package]
-name = "query_opt"
-version = "0.1.0"
-edition = "2021"
-
-[dependencies]
-expr = { path = "expr" }
-optimizer = { path = "optimizer" }
-physical-plan = { path = "physical-plan" }
-execution = { path = "execution" }
-storage = { path = "storage" }
-sql-parser = { path = "sql-parser" }
-rustyline = "15"
-colored = "2"

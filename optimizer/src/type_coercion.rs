@@ -18,7 +18,9 @@ use expr::logical_plan::LogicalPlan;
 pub struct TypeCoercion;
 
 impl OptimizerRule for TypeCoercion {
-    fn name(&self) -> &str { "TypeCoercion" }
+    fn name(&self) -> &str {
+        "TypeCoercion"
+    }
 
     fn optimize(&self, plan: LogicalPlan) -> Result<LogicalPlan, OptimizerError> {
         // TODO: Walk the plan tree. For each node with expressions:
@@ -37,9 +39,13 @@ mod tests {
 
     #[test]
     #[ignore]
-    fn test_coerce_int_float_comparison() { todo!() }
+    fn test_coerce_int_float_comparison() {
+        todo!()
+    }
 
     #[test]
     #[ignore]
-    fn test_no_coercion_same_types() { todo!() }
+    fn test_no_coercion_same_types() {
+        todo!()
+    }
 }

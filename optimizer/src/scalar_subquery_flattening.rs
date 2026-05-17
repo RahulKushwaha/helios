@@ -22,7 +22,9 @@ use expr::logical_plan::LogicalPlan;
 pub struct ScalarSubqueryFlattening;
 
 impl OptimizerRule for ScalarSubqueryFlattening {
-    fn name(&self) -> &str { "ScalarSubqueryFlattening" }
+    fn name(&self) -> &str {
+        "ScalarSubqueryFlattening"
+    }
 
     fn optimize(&self, plan: LogicalPlan) -> Result<LogicalPlan, OptimizerError> {
         // TODO: Walk the plan tree. For each Projection expression:
@@ -47,7 +49,9 @@ mod tests {
 
     #[test]
     #[ignore]
-    fn test_scalar_subquery_to_left_join() { todo!() }
+    fn test_scalar_subquery_to_left_join() {
+        todo!()
+    }
 
     #[test]
     #[ignore]
@@ -58,5 +62,7 @@ mod tests {
 
     #[test]
     #[ignore]
-    fn test_no_change_without_scalar_subquery() { todo!() }
+    fn test_no_change_without_scalar_subquery() {
+        todo!()
+    }
 }

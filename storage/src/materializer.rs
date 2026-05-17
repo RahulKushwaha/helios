@@ -1,5 +1,5 @@
-use row::DataRow;
 use row::types::RowKey;
+use row::DataRow;
 
 use crate::read::StorageRead;
 use crate::table::Table;

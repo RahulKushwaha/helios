@@ -11,8 +11,8 @@
 //! - Materialization (fetching full rows from index results) is handled
 //!   by the [`Materializer`](crate::materializer::Materializer) layer.
 
-use row::DataRow;
 use row::types::{RowKey, RowValue};
+use row::DataRow;
 
 use crate::table::Table;
 use crate::RocksStorage;
@@ -98,7 +98,9 @@ impl StorageRead for RocksStorage {
             .into_iter()
             .zip(keys)
             .filter_map(|(result, key)| {
-                result.ok()?.map(|val| DataRow::new(key.clone(), RowValue(val.to_vec())))
+                result
+                    .ok()?
+                    .map(|val| DataRow::new(key.clone(), RowValue(val.to_vec())))
             })
             .collect()
     }

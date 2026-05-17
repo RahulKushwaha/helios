@@ -15,7 +15,9 @@ use expr::logical_plan::LogicalPlan;
 pub struct AggregatePushdown;
 
 impl OptimizerRule for AggregatePushdown {
-    fn name(&self) -> &str { "AggregatePushdown" }
+    fn name(&self) -> &str {
+        "AggregatePushdown"
+    }
 
     fn optimize(&self, plan: LogicalPlan) -> Result<LogicalPlan, OptimizerError> {
         // TODO: Walk the plan tree. For Aggregate over Join:
@@ -33,9 +35,13 @@ mod tests {
 
     #[test]
     #[ignore]
-    fn test_push_aggregate_below_join() { todo!() }
+    fn test_push_aggregate_below_join() {
+        todo!()
+    }
 
     #[test]
     #[ignore]
-    fn test_no_push_when_args_span_both_sides() { todo!() }
+    fn test_no_push_when_args_span_both_sides() {
+        todo!()
+    }
 }

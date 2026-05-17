@@ -16,7 +16,9 @@ use expr::logical_plan::LogicalPlan;
 pub struct UnwrapCastInComparison;
 
 impl OptimizerRule for UnwrapCastInComparison {
-    fn name(&self) -> &str { "UnwrapCastInComparison" }
+    fn name(&self) -> &str {
+        "UnwrapCastInComparison"
+    }
 
     fn optimize(&self, plan: LogicalPlan) -> Result<LogicalPlan, OptimizerError> {
         // TODO: Walk the plan tree. For each BinaryExpr comparison:
@@ -36,9 +38,13 @@ mod tests {
 
     #[test]
     #[ignore]
-    fn test_unwrap_lossless_cast() { todo!() }
+    fn test_unwrap_lossless_cast() {
+        todo!()
+    }
 
     #[test]
     #[ignore]
-    fn test_keep_lossy_cast() { todo!() }
+    fn test_keep_lossy_cast() {
+        todo!()
+    }
 }

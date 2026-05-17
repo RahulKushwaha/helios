@@ -16,13 +16,17 @@ impl RowCodec {
     /// Create a codec where the first `n` columns are PK.
     pub fn new(n: usize) -> Self {
         assert!(n > 0, "must have at least one PK column");
-        Self { pk_positions: (0..n).collect() }
+        Self {
+            pk_positions: (0..n).collect(),
+        }
     }
 
     /// Create a codec from explicit PK column positions.
     pub fn from_pk_positions(positions: Vec<usize>) -> Self {
         assert!(!positions.is_empty(), "must have at least one PK column");
-        Self { pk_positions: positions }
+        Self {
+            pk_positions: positions,
+        }
     }
 
     pub fn num_pk_cols(&self) -> usize {
@@ -83,7 +87,10 @@ impl RowCodec {
         let mut start = 0;
         for (i, &pos) in self.pk_positions.iter().enumerate() {
             let end = end_offsets[i];
-            pk_values.push((pos, decode_value(&col_data[start..end], &schema.fields[pos].data_type)));
+            pk_values.push((
+                pos,
+                decode_value(&col_data[start..end], &schema.fields[pos].data_type),
+            ));
             start = end;
         }
 
@@ -246,7 +253,10 @@ mod tests {
         assert_eq!(decode_value(col1, &DataType::Int), FieldValue::Int(42));
 
         let col2 = codec.read_pk_column(&key, 2);
-        assert_eq!(decode_value(col2, &DataType::Str), FieldValue::Str("alice".into()));
+        assert_eq!(
+            decode_value(col2, &DataType::Str),
+            FieldValue::Str("alice".into())
+        );
     }
 
     #[test]
@@ -267,7 +277,9 @@ mod tests {
     fn offset_array_size() {
         let codec = RowCodec::new(3);
         let row = vec![
-            FieldValue::Int(1), FieldValue::Int(2), FieldValue::Str("x".into()),
+            FieldValue::Int(1),
+            FieldValue::Int(2),
+            FieldValue::Str("x".into()),
             FieldValue::Bool(false),
         ];
         let (key, _) = codec.encode(&row);

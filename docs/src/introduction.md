@@ -1,8 +1,8 @@
-# query_opt
+# helios
 
 A from scratch query optimizer and SQL engine written in Rust.
 
-`query_opt` implements the core components of a relational database query processor: parsing, planning, optimization, physical planning, execution, and persistent storage. It ships as an interactive REPL that accepts SQL statements and executes them against a RocksDB backend.
+`helios` implements the core components of a relational database query processor: parsing, planning, optimization, physical planning, execution, and persistent storage. It ships as an interactive REPL that accepts SQL statements and executes them against a RocksDB backend.
 
 ## Goals
 
@@ -12,13 +12,13 @@ A from scratch query optimizer and SQL engine written in Rust.
 
 ## Project Status
 
-The project is under active development. Many optimizer rules and the distributed execution layer contain `todo!()` stubs marking planned work. The core path (parse → optimize → execute → return results) is functional for single node queries.
+The project is under active development. Many optimizer rules contain `todo!()` stubs marking planned work. The core path (parse → optimize → execute → return results) is functional for single node queries.
 
 ## Quick Start
 
 ```bash
 cargo build
-cargo run          # opens the REPL with default data directory ./query_opt_data
+cargo run          # opens the REPL with default data directory ./helios_data
 cargo run -- /tmp/mydb   # custom data directory
 ```
 

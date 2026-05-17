@@ -17,7 +17,9 @@ use expr::logical_plan::LogicalPlan;
 pub struct ConstantPropagation;
 
 impl OptimizerRule for ConstantPropagation {
-    fn name(&self) -> &str { "ConstantPropagation" }
+    fn name(&self) -> &str {
+        "ConstantPropagation"
+    }
 
     fn optimize(&self, plan: LogicalPlan) -> Result<LogicalPlan, OptimizerError> {
         // TODO: Walk the plan tree top-down (constants flow downward).
@@ -37,9 +39,13 @@ mod tests {
 
     #[test]
     #[ignore]
-    fn test_propagate_equality_constant() { todo!() }
+    fn test_propagate_equality_constant() {
+        todo!()
+    }
 
     #[test]
     #[ignore]
-    fn test_no_propagation_with_or() { todo!() }
+    fn test_no_propagation_with_or() {
+        todo!()
+    }
 }

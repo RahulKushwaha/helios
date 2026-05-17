@@ -205,7 +205,11 @@ mod tests {
         .unwrap();
         assert_eq!(
             result[0],
-            vec![FieldValue::Int(3), FieldValue::Int(225), FieldValue::Float(75.0)]
+            vec![
+                FieldValue::Int(3),
+                FieldValue::Int(225),
+                FieldValue::Float(75.0)
+            ]
         );
     }
 }

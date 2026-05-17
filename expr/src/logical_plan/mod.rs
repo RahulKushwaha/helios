@@ -2,9 +2,9 @@
 //
 // DataFusion ref: datafusion/expr/src/logical_plan/mod.rs
 
-pub mod plan;
 pub mod builder;
 pub mod display;
+pub mod plan;
 
-pub use plan::{LogicalPlan, JoinType};
 pub use builder::LogicalPlanBuilder;
+pub use plan::{JoinType, LogicalPlan};

@@ -15,7 +15,9 @@ pub struct Column {
     pub col_pos: usize,
 }
 
-fn default_true() -> bool { true }
+fn default_true() -> bool {
+    true
+}
 
 impl Column {
     pub fn new(name: impl Into<String>, data_type: DataType) -> Self {

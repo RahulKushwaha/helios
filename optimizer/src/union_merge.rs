@@ -17,7 +17,9 @@ use expr::logical_plan::LogicalPlan;
 pub struct UnionMerge;
 
 impl OptimizerRule for UnionMerge {
-    fn name(&self) -> &str { "UnionMerge" }
+    fn name(&self) -> &str {
+        "UnionMerge"
+    }
 
     fn optimize(&self, plan: LogicalPlan) -> Result<LogicalPlan, OptimizerError> {
         // TODO: Walk the plan tree. For each Union node:
@@ -34,9 +36,13 @@ mod tests {
 
     #[test]
     #[ignore]
-    fn test_flatten_nested_unions() { todo!() }
+    fn test_flatten_nested_unions() {
+        todo!()
+    }
 
     #[test]
     #[ignore]
-    fn test_eliminate_single_input_union() { todo!() }
+    fn test_eliminate_single_input_union() {
+        todo!()
+    }
 }

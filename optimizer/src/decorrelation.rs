@@ -27,7 +27,9 @@ use expr::logical_plan::LogicalPlan;
 pub struct Decorrelation;
 
 impl OptimizerRule for Decorrelation {
-    fn name(&self) -> &str { "Decorrelation" }
+    fn name(&self) -> &str {
+        "Decorrelation"
+    }
 
     fn optimize(&self, plan: LogicalPlan) -> Result<LogicalPlan, OptimizerError> {
         // TODO: Walk the plan tree. For each node containing a correlated subquery:
@@ -51,13 +53,19 @@ mod tests {
 
     #[test]
     #[ignore]
-    fn test_exists_to_semi_join() { todo!() }
+    fn test_exists_to_semi_join() {
+        todo!()
+    }
 
     #[test]
     #[ignore]
-    fn test_not_exists_to_anti_join() { todo!() }
+    fn test_not_exists_to_anti_join() {
+        todo!()
+    }
 
     #[test]
     #[ignore]
-    fn test_no_change_uncorrelated() { todo!() }
+    fn test_no_change_uncorrelated() {
+        todo!()
+    }
 }

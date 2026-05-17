@@ -72,8 +72,12 @@ pub fn arith(
     match (l, r) {
         (FieldValue::Int(a), FieldValue::Int(b)) => Ok(FieldValue::Int(int_op(*a, *b))),
         (FieldValue::Float(a), FieldValue::Float(b)) => Ok(FieldValue::Float(float_op(*a, *b))),
-        (FieldValue::Int(a), FieldValue::Float(b)) => Ok(FieldValue::Float(float_op(*a as f64, *b))),
-        (FieldValue::Float(a), FieldValue::Int(b)) => Ok(FieldValue::Float(float_op(*a, *b as f64))),
+        (FieldValue::Int(a), FieldValue::Float(b)) => {
+            Ok(FieldValue::Float(float_op(*a as f64, *b)))
+        }
+        (FieldValue::Float(a), FieldValue::Int(b)) => {
+            Ok(FieldValue::Float(float_op(*a, *b as f64)))
+        }
         _ => Err(format!("cannot do arithmetic on {:?} and {:?}", l, r)),
     }
 }
@@ -125,7 +129,10 @@ mod tests {
             op: Operator::Gt,
             right: Box::new(Expr::Literal(FieldValue::Int(5))),
         };
-        assert_eq!(eval(&expr, &row, &test_schema()).unwrap(), FieldValue::Bool(true));
+        assert_eq!(
+            eval(&expr, &row, &test_schema()).unwrap(),
+            FieldValue::Bool(true)
+        );
     }
 
     #[test]
@@ -136,7 +143,10 @@ mod tests {
             op: Operator::Plus,
             right: Box::new(Expr::Column("y".into())),
         };
-        assert_eq!(eval(&expr, &row, &test_schema()).unwrap(), FieldValue::Int(10));
+        assert_eq!(
+            eval(&expr, &row, &test_schema()).unwrap(),
+            FieldValue::Int(10)
+        );
     }
 
     #[test]

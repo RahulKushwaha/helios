@@ -1,11 +1,11 @@
 # REPL Guide
 
-The `query_opt` binary starts an interactive SQL REPL backed by RocksDB.
+The `helios` binary starts an interactive SQL REPL backed by RocksDB.
 
 ## Starting the REPL
 
 ```bash
-cargo run                    # uses ./query_opt_data
+cargo run                    # uses ./helios_data
 cargo run -- /path/to/db     # custom data directory
 ```
 

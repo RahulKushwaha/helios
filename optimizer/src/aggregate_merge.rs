@@ -14,7 +14,9 @@ use expr::logical_plan::LogicalPlan;
 pub struct AggregateMerge;
 
 impl OptimizerRule for AggregateMerge {
-    fn name(&self) -> &str { "AggregateMerge" }
+    fn name(&self) -> &str {
+        "AggregateMerge"
+    }
 
     fn optimize(&self, plan: LogicalPlan) -> Result<LogicalPlan, OptimizerError> {
         // TODO: Walk the plan tree. For Aggregate over Aggregate:
@@ -31,9 +33,13 @@ mod tests {
 
     #[test]
     #[ignore]
-    fn test_merge_compatible_aggregates() { todo!() }
+    fn test_merge_compatible_aggregates() {
+        todo!()
+    }
 
     #[test]
     #[ignore]
-    fn test_no_merge_incompatible() { todo!() }
+    fn test_no_merge_incompatible() {
+        todo!()
+    }
 }

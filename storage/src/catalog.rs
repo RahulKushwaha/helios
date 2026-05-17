@@ -78,7 +78,9 @@ impl Catalog for RocksStorage {
             .iter()
             .enumerate()
             .map(|(pos, (name, dt, is_pk))| {
-                Field::new(name.clone(), dt.clone()).with_pk(*is_pk).with_pos(pos)
+                Field::new(name.clone(), dt.clone())
+                    .with_pk(*is_pk)
+                    .with_pos(pos)
             })
             .collect();
         Some(Schema::new(fields))
@@ -92,7 +94,9 @@ impl Catalog for RocksStorage {
             .iter()
             .enumerate()
             .map(|(pos, (col_name, dt, is_pk))| {
-                Field::new(col_name.clone(), dt.clone()).with_pk(*is_pk).with_pos(pos)
+                Field::new(col_name.clone(), dt.clone())
+                    .with_pk(*is_pk)
+                    .with_pos(pos)
             })
             .collect();
         let table = Table::new(0, name, cols);

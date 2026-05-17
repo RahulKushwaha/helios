@@ -18,11 +18,7 @@ use std::collections::HashMap;
 pub trait CostModel {
     /// Estimate the total cost of executing this plan.
     /// Lower cost = better plan.
-    fn estimate_cost(
-        &self,
-        plan: &LogicalPlan,
-        table_stats: &HashMap<String, Statistics>,
-    ) -> f64;
+    fn estimate_cost(&self, plan: &LogicalPlan, table_stats: &HashMap<String, Statistics>) -> f64;
 }
 
 /// A simple cost model using row counts and fixed selectivity estimates.
@@ -37,11 +33,7 @@ pub trait CostModel {
 pub struct SimpleCostModel;
 
 impl CostModel for SimpleCostModel {
-    fn estimate_cost(
-        &self,
-        plan: &LogicalPlan,
-        table_stats: &HashMap<String, Statistics>,
-    ) -> f64 {
+    fn estimate_cost(&self, plan: &LogicalPlan, table_stats: &HashMap<String, Statistics>) -> f64 {
         // TODO: Recursively compute cost for each plan node using the formulas above.
         //
         // For Scan: look up table_stats[table_name].row_count, default to 1000.0

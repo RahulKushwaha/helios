@@ -17,7 +17,9 @@ use expr::logical_plan::LogicalPlan;
 pub struct NullPropagation;
 
 impl OptimizerRule for NullPropagation {
-    fn name(&self) -> &str { "NullPropagation" }
+    fn name(&self) -> &str {
+        "NullPropagation"
+    }
 
     fn optimize(&self, plan: LogicalPlan) -> Result<LogicalPlan, OptimizerError> {
         // TODO: Walk the plan tree. For each expression:
@@ -37,13 +39,19 @@ mod tests {
 
     #[test]
     #[ignore]
-    fn test_null_arithmetic() { todo!() }
+    fn test_null_arithmetic() {
+        todo!()
+    }
 
     #[test]
     #[ignore]
-    fn test_null_and_three_valued() { todo!() }
+    fn test_null_and_three_valued() {
+        todo!()
+    }
 
     #[test]
     #[ignore]
-    fn test_null_or_three_valued() { todo!() }
+    fn test_null_or_three_valued() {
+        todo!()
+    }
 }

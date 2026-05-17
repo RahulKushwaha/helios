@@ -37,9 +37,7 @@ pub fn execute_plan(
             let rows = execute_plan(source, input)?;
             Ok(rows
                 .into_iter()
-                .filter(|row| {
-                    matches!(eval(predicate, row, &schema), Ok(FieldValue::Bool(true)))
-                })
+                .filter(|row| matches!(eval(predicate, row, &schema), Ok(FieldValue::Bool(true))))
                 .collect())
         }
 

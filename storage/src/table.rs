@@ -58,11 +58,24 @@ impl Table {
     }
 
     pub fn pk_columns(&self) -> Vec<Arc<Column>> {
-        self.inner.lock().unwrap().cols.iter().filter(|c| c.is_pk).cloned().collect()
+        self.inner
+            .lock()
+            .unwrap()
+            .cols
+            .iter()
+            .filter(|c| c.is_pk)
+            .cloned()
+            .collect()
     }
 
     pub fn num_pk_cols(&self) -> usize {
-        self.inner.lock().unwrap().cols.iter().filter(|c| c.is_pk).count()
+        self.inner
+            .lock()
+            .unwrap()
+            .cols
+            .iter()
+            .filter(|c| c.is_pk)
+            .count()
     }
 
     pub fn indexes(&self) -> Vec<Arc<Index>> {
@@ -70,7 +83,12 @@ impl Table {
     }
 
     pub fn has_index(&self, column: &str) -> bool {
-        self.inner.lock().unwrap().indexes.iter().any(|idx| idx.columns.contains(&column.to_string()))
+        self.inner
+            .lock()
+            .unwrap()
+            .indexes
+            .iter()
+            .any(|idx| idx.columns.contains(&column.to_string()))
     }
 
     pub fn schema(&self) -> expr::schema::Schema {

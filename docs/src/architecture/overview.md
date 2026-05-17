@@ -1,6 +1,6 @@
 # Architecture Overview
 
-`query_opt` is organized as a Cargo workspace with seven crates, each responsible for one layer of the query processing stack.
+`helios` is organized as a Cargo workspace with seven crates, each responsible for one layer of the query processing stack, plus a `repl/` binary crate that wires them together.
 
 ```
 ┌─────────────┐
@@ -13,8 +13,6 @@
 │  execution   │   PhysicalPlan → result rows
 ├──────────────┤
 │   storage    │   RocksDB backed table/index I/O
-├──────────────┤
-│ distributed  │   Partitioning, fragments, exchanges
 └──────────────┘
         ▲
         │
@@ -36,6 +34,6 @@ The `expr` crate sits at the bottom of the dependency graph. Every other crate d
 | `physical-plan` | `physical-plan/` | `PhysicalPlan` enum and logical to physical conversion |
 | `execution` | `execution/` | `ExecutionEngine` / `DataSource` / `RowStream` / `Aggregator` traits, batched pull-based streams, expression evaluator |
 | `storage` | `storage/` | RocksDB storage layer with secondary indexes |
-| `distributed` | `distributed/` | Partition map, plan fragments, exchanges, coordinator |
+| `row` | `row/` | Row encoding and codec primitives |
 
-The top level binary (`src/main.rs`) wires everything together into an interactive REPL.
+The `repl/` crate (`repl/src/main.rs`) wires everything together into an interactive REPL, producing the `helios` binary.

@@ -255,11 +255,8 @@ mod tests {
 
     #[test]
     fn materialized_stream_chunks_into_batches() {
-        let mut s = MaterializedStream::with_batch_size(
-            (1..=10).map(row).collect(),
-            int_schema(),
-            3,
-        );
+        let mut s =
+            MaterializedStream::with_batch_size((1..=10).map(row).collect(), int_schema(), 3);
         let b1 = s.next_batch().unwrap().unwrap();
         let b2 = s.next_batch().unwrap().unwrap();
         let b3 = s.next_batch().unwrap().unwrap();
@@ -295,8 +292,7 @@ mod tests {
             fn next_batch(&mut self) -> Result<Option<Batch>, ExecutionError> {
                 let result = self.inner.next_batch()?;
                 if result.is_some() {
-                    self.batches_pulled
-                        .set(self.batches_pulled.get() + 1);
+                    self.batches_pulled.set(self.batches_pulled.get() + 1);
                 }
                 Ok(result)
             }

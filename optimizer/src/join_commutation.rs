@@ -12,7 +12,9 @@ use expr::logical_plan::LogicalPlan;
 pub struct JoinCommutation;
 
 impl OptimizerRule for JoinCommutation {
-    fn name(&self) -> &str { "JoinCommutation" }
+    fn name(&self) -> &str {
+        "JoinCommutation"
+    }
 
     fn optimize(&self, plan: LogicalPlan) -> Result<LogicalPlan, OptimizerError> {
         // TODO: Walk the plan tree. For each Inner Join:
@@ -30,9 +32,13 @@ mod tests {
 
     #[test]
     #[ignore]
-    fn test_swap_when_left_smaller() { todo!() }
+    fn test_swap_when_left_smaller() {
+        todo!()
+    }
 
     #[test]
     #[ignore]
-    fn test_no_swap_when_left_larger() { todo!() }
+    fn test_no_swap_when_left_larger() {
+        todo!()
+    }
 }

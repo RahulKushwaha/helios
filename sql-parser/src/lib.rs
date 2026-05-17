@@ -752,9 +752,7 @@ mod tests {
             .plan_sql("SELECT x FROM t1 ORDER BY x LIMIT 10 OFFSET 20")
             .unwrap();
         match result {
-            SqlStatement::Query(LogicalPlan::Limit {
-                skip, fetch, input,
-            }) => {
+            SqlStatement::Query(LogicalPlan::Limit { skip, fetch, input }) => {
                 assert_eq!(skip, 20);
                 assert_eq!(fetch, 10);
                 // Limit sits above Sort, which sits above the rest.

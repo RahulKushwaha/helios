@@ -17,7 +17,9 @@ use expr::logical_plan::LogicalPlan;
 pub struct SingleDistinctToGroupBy;
 
 impl OptimizerRule for SingleDistinctToGroupBy {
-    fn name(&self) -> &str { "SingleDistinctToGroupBy" }
+    fn name(&self) -> &str {
+        "SingleDistinctToGroupBy"
+    }
 
     fn optimize(&self, plan: LogicalPlan) -> Result<LogicalPlan, OptimizerError> {
         // TODO: Walk the plan tree. For each Aggregate:
@@ -37,9 +39,13 @@ mod tests {
 
     #[test]
     #[ignore]
-    fn test_rewrite_count_distinct() { todo!() }
+    fn test_rewrite_count_distinct() {
+        todo!()
+    }
 
     #[test]
     #[ignore]
-    fn test_no_rewrite_without_distinct() { todo!() }
+    fn test_no_rewrite_without_distinct() {
+        todo!()
+    }
 }

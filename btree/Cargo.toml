@@ -1,0 +1,9 @@
+[package]
+name = "btree"
+version = "0.1.0"
+edition = "2021"
+description = "The simplest page-based B+Tree. Bytes->Bytes, single file, no WAL, no dependencies."
+
+[dependencies]
+
+[dev-dependencies]

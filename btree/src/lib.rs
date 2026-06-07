@@ -249,6 +249,35 @@ impl Db {
         }
     }
 
+    /// Collect up to `max` entries starting at `lower` (inclusive; unbounded if
+    /// `None`), in key order. Like [`Db::scan`] but bounded by count instead of
+    /// an upper key, so it stops early on large trees.
+    pub fn scan_limit(&self, lower: Option<&[u8]>, max: usize) -> Result<Vec<(Vec<u8>, Vec<u8>)>> {
+        let mut leaf_id = match lower {
+            Some(k) => self.find_leaf(k)?,
+            None => self.leftmost_leaf()?,
+        };
+        let mut out = Vec::with_capacity(max.min(1024));
+        loop {
+            let leaf = self.pager.read_leaf(leaf_id)?;
+            for (k, v) in &leaf.entries {
+                if let Some(lo) = lower {
+                    if k.as_slice() < lo {
+                        continue;
+                    }
+                }
+                if out.len() >= max {
+                    return Ok(out);
+                }
+                out.push((k.clone(), v.clone()));
+            }
+            if leaf.next == 0 {
+                return Ok(out);
+            }
+            leaf_id = leaf.next;
+        }
+    }
+
     /// Flush all buffered changes to disk. A no-op on a frozen database.
     pub fn sync(&mut self) -> Result<()> {
         if self.frozen {

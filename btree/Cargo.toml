@@ -7,3 +7,7 @@ description = "The simplest page-based B+Tree. Bytes->Bytes, single file, no WAL
 [dependencies]
 
 [dev-dependencies]
+
+[[bench]]
+name = "ycsb"
+harness = false

@@ -112,6 +112,30 @@ fn scan_ranges() {
 }
 
 #[test]
+fn scan_limit_bounds_by_count() {
+    let tmp = TmpDb::new();
+    let mut db = tmp.open();
+    for i in 0..100u32 {
+        db.insert(format!("{i:03}").as_bytes(), b"x").unwrap();
+    }
+    // Bounded by count from a start key.
+    let r = db.scan_limit(Some(b"010"), 5).unwrap();
+    let keys: Vec<String> = r
+        .iter()
+        .map(|(k, _)| String::from_utf8(k.clone()).unwrap())
+        .collect();
+    assert_eq!(keys, vec!["010", "011", "012", "013", "014"]);
+
+    // Fewer than the limit remain near the end.
+    assert_eq!(db.scan_limit(Some(b"098"), 10).unwrap().len(), 2);
+    // From the beginning, and a zero limit.
+    let head = db.scan_limit(None, 3).unwrap();
+    assert_eq!(head.len(), 3);
+    assert_eq!(head[0].0, b"000");
+    assert_eq!(db.scan_limit(None, 0).unwrap().len(), 0);
+}
+
+#[test]
 fn entry_too_large_is_rejected() {
     let tmp = TmpDb::new();
     let mut db = tmp.open();
